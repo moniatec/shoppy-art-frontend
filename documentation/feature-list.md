@@ -12,7 +12,7 @@
 
 3. Shopping Cart
 
-* Showa/displays the items choosen/picked by the user.
+* Shows/displays the items choosen/picked by the user.
 * Shows the total number of items.
 * Shows the total amount to be purchased.
 * Supports removing items from the cart.
