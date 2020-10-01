@@ -15,9 +15,10 @@
 | attribute name | data type |               details |
 | -------------- | :-------: | --------------------: |
 | id             |  integer  | not null, primary key |
-| itemName       |  string   |              not null |
+| itemName       |  string   |       not null,unique |
 | price          |  integer  |              not null |
 | description    |   text    |              not null |
+| sold           |   boolean |              not null |
 | photoUrl       |   text    |              not null |
 | ownerId        |  integer  |           foreign key |
 | createdAt      | timestamp |              not null |
