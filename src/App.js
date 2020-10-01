@@ -1,8 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Login from './components/Login';
+import Logout from './components/Logout';
 
 function App() {
   return (
-    <h1>Hello world!</h1>
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/logout" component={Logout} />
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 
