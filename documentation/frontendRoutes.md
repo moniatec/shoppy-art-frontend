@@ -12,4 +12,8 @@
 * /items/itemId
     - details about an item
 * /users/userId/items
-    - Items for the user on cart
+    - Items for the user
+* /orders/orderId
+    - details about an order
+* /users/userId/orders
+    - orders for the user on cart
