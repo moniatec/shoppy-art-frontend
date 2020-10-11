@@ -2,8 +2,8 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-// import authentication from "./authentication";
-
+import authentication from "./authentication";
+import items from "./items";
 
 
 const persistConfig = {
@@ -13,7 +13,8 @@ const persistConfig = {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
-    // authentication,
+    authentication,
+    items
 
 });
 
