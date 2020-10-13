@@ -13,9 +13,9 @@ export const getHomeItems = () => async (dispatch, getState) => {
         authentication: { token },
     } = getState();
     const res = await fetch(`${apiBaseUrl}/items`, {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
+        // headers: {
+        //     Authorization: `Bearer ${token}`,
+        // },
     });
 
     if (res.ok) {
