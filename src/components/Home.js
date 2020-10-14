@@ -13,14 +13,14 @@ import { getHomeItems } from "../store/items";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        flexWrap: 'wrap',
+        // flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
         backgroundColor: theme.palette.background.paper,
     },
     gridList: {
-        width: 500,
-        height: 450,
+        width: 900,
+        height: 900,
     },
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
@@ -39,16 +39,20 @@ const Home = (props) => {
 
     return (
         <div className={classes.root}>
-            <GridList cellHeight={180} className={classes.gridList}>
-                <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+            <GridList
+                cellHeight={280}
+                className={classes.gridList}>
+                <GridListTile key="Subheader" cols={2}
+                    style={{ height: 'auto' }}
+                >
                     <ListSubheader component="div">Check our awesome items here!</ListSubheader>
                 </GridListTile>
                 {items.map((item) => (
                     <GridListTile key={item.id}>
                         <img src={item.photoUrl} alt={item.photoUrl} />
                         <GridListTileBar
-                            itemname={item.itemname}
-                            subtitle={<span>by: {item.owner}</span>}
+                            title={item.itemname}
+                            subtitle={<span>by: {item.owner.username}</span>}
                         // actionIcon={
                         //     <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
                         //         <InfoIcon />
