@@ -8,6 +8,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import { getHomeItems } from "../store/items";
+import { NavLink } from 'react-router-dom';
 // import tileData from './tileData';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +50,10 @@ const Home = (props) => {
                 </GridListTile>
                 {items.map((item) => (
                     <GridListTile key={item.id}>
-                        <img src={item.photoUrl} alt={item.photoUrl} />
+
+                        <NavLink style={{ color: 'white' }} to={`/items/${item.id}`} >
+                            <img src={item.photoUrl} alt={item.photoUrl} />
+                        </NavLink>
                         <GridListTileBar
                             title={item.itemname}
                             subtitle={<span>by: {item.owner.username}</span>}
