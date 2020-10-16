@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     gridList: {
         width: 900,
         height: 900,
+
     },
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
@@ -42,6 +43,7 @@ const Home = (props) => {
         <div className={classes.root}>
             <GridList
                 cellHeight={280}
+
                 className={classes.gridList}>
                 <GridListTile key="Subheader" cols={2}
                     style={{ height: 'auto' }}
@@ -52,7 +54,7 @@ const Home = (props) => {
                     <GridListTile key={item.id}>
 
                         <NavLink style={{ color: 'white' }} to={`/items/${item.id}`} >
-                            <img src={item.photoUrl} alt={item.photoUrl} />
+                            <img maxWidth="100%" style={{ objectFit: 'contain', width: '100%', height: '100%' }} src={item.photoUrl} alt={item.photoUrl} />
                         </NavLink>
                         <GridListTileBar
                             title={item.itemname}
