@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -32,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
 const Home = (props) => {
     const classes = useStyles();
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
+
     React.useEffect(() => {
         props.getHomeItems();
 
@@ -40,34 +47,41 @@ const Home = (props) => {
     const items = props.items
 
     return (
-        <div className={classes.root}>
-            <GridList
-                cellHeight={280}
+        <div>
+            {
+                isAuthenticated ? (
+                    <div className={classes.root} >
+                        <GridList
+                            cellHeight={280}
 
-                className={classes.gridList}>
-                <GridListTile key="Subheader" cols={2}
-                    style={{ height: 'auto' }}
-                >
-                    <ListSubheader component="div">Check our awesome items here!</ListSubheader>
-                </GridListTile>
-                {items.map((item) => (
-                    <GridListTile key={item.id}>
+                            className={classes.gridList}>
+                            <GridListTile key="Subheader" cols={2}
+                                style={{ height: 'auto' }}
+                            >
+                                <ListSubheader component="div">Check our awesome items here!</ListSubheader>
+                            </GridListTile>
+                            {items.map((item) => (
+                                <GridListTile key={item.id}>
 
-                        <NavLink style={{ color: 'white' }} to={`/items/${item.id}`} >
-                            <img maxWidth="100%" style={{ objectFit: 'contain', width: '100%', height: '100%' }} src={item.photoUrl} alt={item.photoUrl} />
-                        </NavLink>
-                        <GridListTileBar
-                            title={item.itemname}
-                            subtitle={<span>by: {item.owner.username}</span>}
-                        // actionIcon={
-                        //     <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                        //         <InfoIcon />
-                        //     </IconButton>
-                        // }
-                        />
-                    </GridListTile>
-                ))}
-            </GridList>
+                                    <NavLink style={{ color: 'white' }} to={`/items/${item.id}`} >
+                                        <img maxWidth="100%" style={{ objectFit: 'contain', width: '100%', height: '100%' }} src={item.photoUrl} alt={item.photoUrl} />
+                                    </NavLink>
+                                    <GridListTileBar
+                                        title={item.itemname}
+                                        subtitle={<span>by: {item.owner.username}</span>}
+                                    // actionIcon={
+                                    //     <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                                    //         <InfoIcon />
+                                    //     </IconButton>
+                                    // }
+                                    />
+                                </GridListTile>
+                            ))}
+                        </GridList>
+                    </div >
+                ) : (
+                        <div></div>
+                    )}
         </div>
     );
 }

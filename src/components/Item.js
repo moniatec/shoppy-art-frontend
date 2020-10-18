@@ -20,10 +20,10 @@ import { getOneItem } from "../store/items";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 500,
+        maxWidth: 1000,
     },
     media: {
-        // height: 0,
+        height: 0,
         paddingTop: '56.25%', // 16:9
     },
     expand: {
@@ -60,8 +60,8 @@ const Item = (props) => {
                 <CardHeader
                     avatar={
                         <Avatar aria-label="recipe" className={classes.avatar}>
-                            R
-          </Avatar>
+                            {item.owner.username[0]}
+                        </Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">
@@ -73,7 +73,8 @@ const Item = (props) => {
                 />
                 <CardMedia
                     className={classes.media}
-                    style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                    maxWidth="100%"
+                    style={{ objectFit: 'contain' }}
                     image={item.photoUrl}
                     title={item.itemname}
                 />
