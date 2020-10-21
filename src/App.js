@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Home from './components/Home';
 import Item from './components/Item';
+import Nav from './components/Nav';
 function App() {
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
+          <Route exact path="/nav" component={Nav} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/items/:itemId"
             component={Item}

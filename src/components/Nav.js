@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
@@ -14,6 +16,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Logout from './Logout';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -117,6 +120,9 @@ const Nav = (props) => {
         >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Logout />
+            </MenuItem>
         </Menu>
     );
 
@@ -131,21 +137,24 @@ const Nav = (props) => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
+            {/* <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="secondary">
                         <MailIcon />
                     </Badge>
                 </IconButton>
                 <p>Messages</p>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
-                        <NotificationsIcon />
+                <IconButton color="inherit">
+                    <Badge
+                        // badgeContent={17}
+                        color="secondary">
+                        <ShoppingCartIcon />
                     </Badge>
                 </IconButton>
-                <p>Notifications</p>
+
+                <p>Cart</p>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
@@ -174,7 +183,7 @@ const Nav = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Material-UI
+                        Shoppy-Art
           </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
@@ -191,14 +200,18 @@ const Nav = (props) => {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
+                        {/* <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <MailIcon />
                             </Badge>
-                        </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon />
+                        </IconButton> */}
+                        <IconButton
+                            // aria-label="show 17 new notifications" 
+                            color="inherit">
+                            <Badge
+                                // badgeContent={17}
+                                color="secondary">
+                                <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
