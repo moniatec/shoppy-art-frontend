@@ -17,6 +17,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Logout from './Logout';
+import Login from './Login';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -87,6 +89,8 @@ const Nav = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
+
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -118,11 +122,23 @@ const Nav = (props) => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-            <MenuItem onClick={handleMenuClose}>
-                <Logout />
-            </MenuItem>
+            <div>
+                {
+                    isAuthenticated ? (
+                        <div>
+                            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+                            <MenuItem onClick={handleMenuClose}>
+                                <Logout />
+                            </MenuItem>
+                        </div>
+                    ) : (
+                            <MenuItem onClick={handleMenuClose}>
+                                <Login />
+                            </MenuItem>
+                        )
+                }
+            </div>
         </Menu>
     );
 
@@ -137,14 +153,7 @@ const Nav = (props) => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            {/* <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem> */}
+
             <MenuItem>
                 <IconButton color="inherit">
                     <Badge
@@ -200,11 +209,7 @@ const Nav = (props) => {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        {/* <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton> */}
+
                         <IconButton
                             // aria-label="show 17 new notifications" 
                             color="inherit">
