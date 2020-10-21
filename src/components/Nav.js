@@ -23,6 +23,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 const useStyles = makeStyles((theme) => ({
     grow: {
         flexGrow: 1,
+
+    },
+    navbar: {
+        fontFamily: theme.fontFamily,
+        background: theme.gradientBackground,
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -181,7 +186,7 @@ const Nav = (props) => {
 
     return (
         <div className={classes.grow}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.navbar}>
                 <Toolbar>
                     <IconButton
                         edge="start"
