@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         backgroundColor: theme.palette.background.paper,
+        marginTop: 70
     },
     gridList: {
         width: 900,
