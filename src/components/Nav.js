@@ -18,6 +18,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Logout from './Logout';
 import Login from './Login';
+import MenuModal from './MenuModal';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme) => ({
@@ -195,12 +196,14 @@ const Nav = (props) => {
                         className={classes.menuButton}
                         color="inherit"
                         aria-label="open drawer"
+                    // onClick={handleProfileMenuOpen}
                     >
-                        <MenuIcon />
+                        {/* <MenuIcon /> */}
+                        <MenuModal />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
                         Shoppy-Art
-          </Typography>
+                    </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />

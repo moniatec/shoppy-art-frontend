@@ -6,7 +6,7 @@ import Logout from './components/Logout';
 import Home from './components/Home';
 import Item from './components/Item';
 import Nav from './components/Nav';
-import BottomNav from './components/BottomNav';
+
 import Theme from './Theme';
 import { CssBaseline, } from "@material-ui/core";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -28,6 +28,7 @@ function App(props) {
               >
                 <Switch>
                   <Route exact path="/login" component={Login} />
+
                   <Route exact path="/logout" component={Logout} />
                   {/* <Route exact path="/nav" component={Nav} /> */}
                   <Route exact path="/home" component={Home} />
@@ -40,7 +41,7 @@ function App(props) {
               </CSSTransition>
             </TransitionGroup>
           )} />
-          <BottomNav />
+
         </BrowserRouter>
       </Theme>
     </>
