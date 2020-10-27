@@ -6,6 +6,7 @@ import Logout from './components/Logout';
 import Home from './components/Home';
 import Item from './components/Item';
 import Nav from './components/Nav';
+import { AuthRoute, ProtectedRoute } from "./authRoutes";
 
 import Theme from './Theme';
 import { CssBaseline, } from "@material-ui/core";
@@ -27,12 +28,12 @@ function App(props) {
                 classNames='fade'
               >
                 <Switch>
-                  <Route exact path="/login" component={Login} />
+                  <AuthRoute exact path="/login" component={Login} />
 
                   <Route exact path="/logout" component={Logout} />
                   {/* <Route exact path="/nav" component={Nav} /> */}
-                  <Route exact path="/home" component={Home} />
-                  <Route exact path="/items/:itemId"
+                  <ProtectedRoute exact path="/home" component={Home} />
+                  <ProtectedRoute exact path="/items/:itemId"
                     component={Item}
                   // token={props.token}
                   // currentUserId={props.currentUserId}
