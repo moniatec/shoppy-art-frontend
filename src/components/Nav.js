@@ -8,6 +8,8 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
+import Link from "@material-ui/core/Link";
+import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -201,9 +203,14 @@ const Nav = (props) => {
                         {/* <MenuIcon /> */}
                         <MenuModal />
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Shoppy-Art
+                    <Link style={{ color: 'white', }} href="/home">
+                        <Button color="inherit">
+                            <Typography className={classes.title} variant="h6" noWrap>
+                                Shoppy-Art
                     </Typography>
+                        </Button>
+                    </Link>
+
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -261,8 +268,8 @@ const Nav = (props) => {
 
 const mapStateToProps = state => {
     return {
-        currentUserId: state.authentication.currentUserId,
-        token: state.authentication.token
+        // currentUserId: state.authentication.currentUserId,
+        // token: state.authentication.token
     };
 };
 

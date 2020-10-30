@@ -26,6 +26,7 @@ export const getHomeItems = () => async (dispatch, getState) => {
 
 //send get req to get details of an item wiht itemId
 export const getOneItem = (itemId) => async (dispatch, getState) => {
+    console.log('here')
     const {
         authentication: { token },
     } = getState();
@@ -38,13 +39,13 @@ export const getOneItem = (itemId) => async (dispatch, getState) => {
 
     if (res.ok) {
         const resItem = await res.json();
-
+        console.log(resItem)
         dispatch(getItem(resItem))
 
     }
 }
 
-export default function reducer(state = { list: [] }, action) {
+export default function reducer(state = { list: [], item: {} }, action) {
     switch (action.type) {
         case HOME_ITEMS: {
             return {
@@ -53,12 +54,16 @@ export default function reducer(state = { list: [] }, action) {
             }
         }
         case ITEM: {
-            const newState = Object.assign({}, state)
-            newState.resItem = {
-                item: action.resItem.item,
+            // const newState = Object.assign({}, state)
+            // newState.resItem = {
+            //     item: action.resItem.item,
 
+            // }
+            // return newState
+            return {
+                ...state,
+                item: action.resItem.item
             }
-            return newState
         }
         default:
             return state;

@@ -53,7 +53,7 @@ const Item = (props) => {
         props.getOneItem(id);
     }, [])
     if (props.item) {
-        const item = props.item.item
+        const item = props.item
 
         return (
             <Card className={classes.root}>
@@ -130,15 +130,19 @@ const Item = (props) => {
                 </Collapse>
             </Card>
         );
+    } else {
+        return (
+            <h1>Loading</h1>
+        )
     }
 }
 
 const mapStateToProps = state => {
-    if (state.items.resItem)
+    if (state.items)
         return {
             token: state.authentication.token,
             currentUserId: state.authentication.currentUserId,
-            item: state.items.resItem,
+            item: state.items.item,
         };
 };
 

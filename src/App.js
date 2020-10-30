@@ -28,16 +28,12 @@ function App(props) {
                 classNames='fade'
               >
                 <Switch>
-                  <AuthRoute exact path="/login" component={Login} />
+                  <Route exact path="/login" component={Login} />
 
                   <Route exact path="/logout" component={Logout} />
                   {/* <Route exact path="/nav" component={Nav} /> */}
-                  <ProtectedRoute exact path="/home" component={Home} />
-                  <ProtectedRoute exact path="/items/:itemId"
-                    component={Item}
-                  // token={props.token}
-                  // currentUserId={props.currentUserId}
-                  />
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/items/:itemId" component={Item} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

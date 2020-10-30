@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -46,7 +47,7 @@ const Home = (props) => {
     }, [])
 
     const items = props.items
-
+    console.log(props)
     return (
         <div>
             {
@@ -90,8 +91,8 @@ const Home = (props) => {
 
 const mapStateToProps = state => {
     return {
-        // token: state.authentication.token,
-        // currentUserId: state.authentication.currentUserId,
+        token: state.authentication.token,
+        currentUserId: state.authentication.currentUserId,
         items: state.items.list,
 
     };
