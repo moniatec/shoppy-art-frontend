@@ -20,10 +20,10 @@ import { getOneItem } from "../store/items";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 1000,
+        // maxWidth: 1000,
     },
     media: {
-        height: 0,
+        // height: 0,
         paddingTop: '56.25%', // 16:9
     },
     expand: {
@@ -73,7 +73,8 @@ const Item = (props) => {
                 />
                 <CardMedia
                     className={classes.media}
-                    maxWidth="100%"
+                    // maxWidth="100%"
+                    // maxHeight="100%"
                     style={{ objectFit: 'contain' }}
                     image={item.photoUrl}
                     title={item.itemname}

@@ -4,6 +4,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authentication from "./authentication";
 import items from "./items";
+import orders from "./orders";
 
 
 const persistConfig = {
@@ -14,7 +15,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
     authentication,
-    items
+    items,
+    orders
 
 });
 
