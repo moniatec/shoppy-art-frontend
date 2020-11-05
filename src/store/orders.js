@@ -9,6 +9,7 @@ const UPDATE_ORDER = "SHOPPY/orders/UPDATE_ORDER"
 export const orders = (list) => ({ type: ORDERS, list });
 export const getOrder = (resOrder) => ({ type: ORDER, resOrder });
 export const setOrder = (order) => ({ type: SET_ORDER, order });
+export const updateOrder = (order, itemId) => ({ type: UPDATE_ORDER, itemId, order })
 
 //send get req to get all order 
 export const getOrders = () => async (dispatch, getState) => {
@@ -47,12 +48,12 @@ export const getOneOrder = (orderId) => async (dispatch, getState) => {
 }
 
 //send post req to create new order 
-export const createOrder = (userId, itemId) => async (dispatch, getState) => {
+export const createOrder = (userId, itemId, total) => async (dispatch, getState) => {
     // const userId = window.localStorage.getItem("currentUserId");
     const res = await fetch(`${apiBaseUrl}/orders`, {
         method: "post",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, itemId }),
+        body: JSON.stringify({ userId, itemId, total }),
     });
 
     if (res.ok) {
@@ -61,6 +62,28 @@ export const createOrder = (userId, itemId) => async (dispatch, getState) => {
 
         dispatch(setOrder(order));
 
+    }
+};
+
+
+export const updateOrderReq = (itemId, orderId, newTotal) => async (dispatch) => {
+    try {
+        const body = JSON.stringify({ itemId, newTotal })
+        const res = await fetch(`${apiBaseUrl}/orders/${orderId}`, {
+            method: "PUT",
+            body,
+            // headers: {
+            //     "x-access-token": `${token}`,
+            //     "Content-Type": "application/json"
+            // },
+        });
+        if (!res.ok) throw res;
+        const order = await res.json();
+        dispatch(updateOrder(itemId, order));
+        window.location.href = window.location.href;
+        return
+    } catch (err) {
+        console.error(err);
     }
 };
 
@@ -87,6 +110,13 @@ export default function reducer(state = { list: [], order: {} }, action) {
                 ],
                 setOrder: action.order
             };
+        }
+        case UPDATE_ORDER: {
+
+            return {
+                ...state,
+                order: action.order,
+            }
         }
         default:
             return state;
