@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 import { createOrder, getOneOrder } from "../store/orders";
 import '../index.css';
 
@@ -14,19 +16,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CartButton = (props) => {
+    const history = useHistory();
     const classes = useStyles();
     const [disableBtn, setDisableBtn] = useState(false);
-    // let userId = window.localStorage.getItem("currentUserId");
-    // let eventsJoin = props.eventsJoin
-    // let eventId = props.eventId
-    // React.useEffect(() => {
-    //     for (let i = 0; i < eventsJoin.length; i++) {
-    //         if (eventsJoin[i].eventId === eventId) {
-    //             setDisableBtn(true);
-    //         }
-    //     }
-    // }, []);
-
+    const userId = useSelector((state) => state.authentication.user.id);
+    const itemId = props.itemId
+    const total = props.total
     const handleBtn = async () => {
         props.createOrder(userId, itemId, total);
         setDisableBtn(true);

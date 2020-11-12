@@ -17,6 +17,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { getOneItem } from "../store/items";
+import CartButton from './CartButton';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -91,6 +92,9 @@ const Item = (props) => {
                     <IconButton aria-label="share">
                         <ShareIcon />
                     </IconButton>
+
+                    <CartButton itemId={item.id} total={item.price} />
+
                     <IconButton
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,
