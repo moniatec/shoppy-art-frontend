@@ -1,20 +1,39 @@
-const SET_USER = "SET_USER";
+// const SET_USER = "SET_USER";
+export const SET_USER = 'shoppyArt/authentication/SET_USER';
+export const SET_TOKEN = 'shoppyArt/authentication/SET_TOKEN';
 
-export const setUser = (user) => {
-    return { type: SET_USER, user };
+export const setUserAction = (currentUser) => {
+    return { type: SET_USER, currentUser };
+};
+export const setTokenAction = (token) => {
+    return { type: SET_TOKEN, token };
 };
 
-const initialState = {
-    user: {},
+// dispatch functions
+export const setUser = (user) => (dispatch) => {
+    dispatch(setUserAction(user));
 };
-export default function reducer(state = initialState, action) {
+
+export const setToken = (token) => (dispatch) => {
+    dispatch(setTokenAction(token));
+};
+// const initialState = {
+//     user: {},
+// };
+export default function reducer(state = {}, action) {
     switch (action.type) {
         case SET_USER: {
             return {
                 ...state,
-                user: action.user,
+                currentUser: action.currentUser,
             };
         }
+
+        case SET_TOKEN:
+            return {
+                ...state,
+                token: action.token
+            };
 
         default:
             return state;
