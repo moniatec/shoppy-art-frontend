@@ -146,7 +146,7 @@ const mapStateToProps = state => {
     if (state.items)
         return {
             token: state.authentication.token,
-            currentUserId: state.authentication.currentUserId,
+            userId: state.authentication.userId,
             item: state.items.item,
         };
 };

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useAuth0 } from "@auth0/auth0-react";
-// import { useAuth0 } from './react-auth0-spa';
+// import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from './react-auth-spa';
 import { useSelector, useDispatch } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Home from './components/Home';
@@ -20,23 +20,24 @@ function App(props) {
   const { user, getTokenSilently } = useAuth0();
   const currentUser = useSelector((state) => state.authentication.currentUser);
   const dispatch = useDispatch();
-  // useEffect(
-  //   () => {
-  //     if (user) {
-  //       dispatch(setUser(user));
-  //       (async () => {
-  //         const silentToken = await getTokenSilently();
-  //         dispatch(setToken(silentToken));
-  //       })();
-  //     }
-  //   },
+  useEffect(
+    () => {
+      if (user) {
+        dispatch(setUser(user));
+        (async () => {
+          const silentToken = await getTokenSilently();
+          dispatch(setToken(silentToken));
+        })();
+      }
+    },
 
-  //   [user]
-  // );
+    [user]
+  );
   return (
     <>
       <CssBaseline />
       <Theme>
+        {/* <Router history={history}> */}
         <BrowserRouter>
 
           <Nav props={props} location={props.location} />
@@ -47,6 +48,7 @@ function App(props) {
                 timeout={300}
                 classNames='fade'
               >
+
                 <Switch>
                   <Route exact path="/login" component={Login} />
 
@@ -55,11 +57,13 @@ function App(props) {
                   <Route exact path="/home" component={Home} />
                   <Route exact path="/items/:itemId" component={Item} />
                 </Switch>
+
               </CSSTransition>
             </TransitionGroup>
           )} />
 
         </BrowserRouter>
+        {/* </Router> */}
       </Theme>
     </>
   );

@@ -92,7 +92,7 @@ const Home = (props) => {
 const mapStateToProps = state => {
     return {
         token: state.authentication.token,
-        currentUser: state.authentication.currentUser,
+        user: state.authentication.user,
         items: state.items.list,
 
     };

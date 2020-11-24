@@ -48,12 +48,12 @@ export const getOneOrder = (orderId) => async (dispatch, getState) => {
 }
 
 //send post req to create new order 
-export const createOrder = (userId, itemId, total) => async (dispatch, getState) => {
+export const createOrder = (userId, itemId) => async (dispatch, getState) => {
     // const userId = window.localStorage.getItem("currentUserId");
     const res = await fetch(`${apiBaseUrl}/orders`, {
         method: "post",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, itemId, total }),
+        body: JSON.stringify({ userId, itemId }),
     });
 
     if (res.ok) {
@@ -66,9 +66,9 @@ export const createOrder = (userId, itemId, total) => async (dispatch, getState)
 };
 
 
-export const updateOrderReq = (itemId, orderId, newTotal) => async (dispatch) => {
+export const updateOrderReq = (itemId, orderId) => async (dispatch) => {
     try {
-        const body = JSON.stringify({ itemId, newTotal })
+        const body = JSON.stringify({ itemId })
         const res = await fetch(`${apiBaseUrl}/orders/${orderId}`, {
             method: "PUT",
             body,
