@@ -17,22 +17,22 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function App(props) {
 
-  const { user, getTokenSilently } = useAuth0();
+  // const { user, getTokenSilently } = useAuth0();
   const currentUser = useSelector((state) => state.authentication.currentUser);
   const dispatch = useDispatch();
-  useEffect(
-    () => {
-      if (user) {
-        dispatch(setUser(user));
-        (async () => {
-          const silentToken = await getTokenSilently();
-          dispatch(setToken(silentToken));
-        })();
-      }
-    },
+  // useEffect(
+  //   () => {
+  //     if (user) {
+  //       dispatch(setUser(user));
+  //       (async () => {
+  //         const silentToken = await getTokenSilently();
+  //         dispatch(setToken(silentToken));
+  //       })();
+  //     }
+  //   },
 
-    [user]
-  );
+  //   [user]
+  // );
   return (
     <>
       <CssBaseline />

@@ -24,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
         // maxWidth: 1000,
     },
     media: {
-        // height: 0,
+        height: '100%',
         paddingTop: '56.25%', // 16:9
+        backgroundSize: 'contain'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -74,8 +75,8 @@ const Item = (props) => {
                 />
                 <CardMedia
                     className={classes.media}
-                    // maxWidth="100%"
-                    // maxHeight="100%"
+                    maxWidth="100%"
+                    maxHeight="100%"
                     style={{ objectFit: 'contain' }}
                     image={item.photoUrl}
                     title={item.itemname}
